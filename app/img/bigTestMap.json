@@ -1,0 +1,43 @@
+{ "height":10,
+ "layers":[
+        {
+         "data":[1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 1, 2, 2, 3, 0, 0, 4, 4, 0, 0, 4, 0, 0, 0, 0, 0, 4, 4, 0, 0, 4, 0, 0, 0, 0, 0, 4, 4, 0, 0, 7, 2, 2, 9, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 7, 2, 2, 2, 2, 2, 2, 2, 2, 9],
+         "height":10,
+         "name":"Tile Layer 1",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":10,
+         "x":0,
+         "y":0
+        }],
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "properties":
+    {
+
+    },
+ "renderorder":"right-down",
+ "tileheight":64,
+ "tilesets":[
+        {
+         "columns":3,
+         "firstgid":1,
+         "image":"big_wall.png",
+         "imageheight":192,
+         "imagewidth":192,
+         "margin":0,
+         "name":"big_wall",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tilecount":9,
+         "tileheight":64,
+         "tilewidth":64
+        }],
+ "tilewidth":64,
+ "version":1,
+ "width":10
+}

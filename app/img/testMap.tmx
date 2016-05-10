@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" nextobjectid="7">
+ <tileset firstgid="1" name="dungeon" tilewidth="16" tileheight="16" tilecount="1020" columns="20">
+  <image source="../../../../../Desktop/DawnLike/Objects/Wall.png" width="320" height="816"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="10" height="10">
+  <data encoding="csv">
+61,62,62,62,62,62,62,62,62,63,
+81,32,32,32,32,32,32,32,32,81,
+81,32,32,61,62,62,63,32,32,81,
+81,32,32,81,32,32,32,32,32,81,
+81,32,32,81,32,32,32,32,32,81,
+81,32,32,81,32,32,81,32,32,81,
+81,32,32,101,62,62,103,32,32,81,
+81,32,32,32,32,32,32,32,32,81,
+81,32,32,32,32,32,32,32,32,81,
+101,62,62,62,62,62,62,62,62,103
+</data>
+ </layer>
+ <objectgroup name="Object Layer 1" visible="0"/>
+</map>

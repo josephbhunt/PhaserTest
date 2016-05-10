@@ -1,0 +1,55 @@
+{ "height":10,
+ "layers":[
+        {
+         "data":[61, 62, 62, 62, 62, 62, 62, 62, 62, 63, 81, 32, 32, 32, 32, 32, 32, 32, 32, 81, 81, 32, 32, 61, 62, 62, 63, 32, 32, 81, 81, 32, 32, 81, 32, 32, 32, 32, 32, 81, 81, 32, 32, 81, 32, 32, 32, 32, 32, 81, 81, 32, 32, 81, 32, 32, 81, 32, 32, 81, 81, 32, 32, 101, 62, 62, 103, 32, 32, 81, 81, 32, 32, 32, 32, 32, 32, 32, 32, 81, 81, 32, 32, 32, 32, 32, 32, 32, 32, 81, 101, 62, 62, 62, 62, 62, 62, 62, 62, 103],
+         "height":10,
+         "name":"Tile Layer 1",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":10,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":10,
+         "name":"Object Layer 1",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":false,
+         "width":10,
+         "x":0,
+         "y":0
+        }],
+ "nextobjectid":7,
+ "orientation":"orthogonal",
+ "properties":
+    {
+
+    },
+ "renderorder":"right-down",
+ "tileheight":16,
+ "tilesets":[
+        {
+         "columns":20,
+         "firstgid":1,
+         "image":"..\/..\/..\/..\/..\/Desktop\/DawnLike\/Objects\/Wall.png",
+         "imageheight":816,
+         "imagewidth":320,
+         "margin":0,
+         "name":"dungeon",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tilecount":1020,
+         "tileheight":16,
+         "tilewidth":16
+        }],
+ "tilewidth":16,
+ "version":1,
+ "width":10
+}
