@@ -1,21 +1,29 @@
 var Game = function(game){
-  var layer;
   var player;
+  var enemy;
   var map;
-
+  var graphics;
+  var weapon;
 }
 
 Game.prototype = {
   preload: function() {
     game.load.tilemap('map', 'app/img/bigTestMap.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('tiles', 'app/img/big_wall.png');
+    game.load.image("bullet", "app/img/bullet_left.png")
 
     player = new Player(game);
+    enemy = new Enemy(game);
+    enemy.preload();
     player.preload();
   },
 
   create: function() {
     game.stage.backgroundColor = '#787878';
+
+    // Debuging
+    game.graphics = game.add.graphics(0, 0);
+    weapon = new Weapon.SingleBullet(game)
 
     // Map
     map = game.add.tilemap("map");
@@ -23,10 +31,10 @@ Game.prototype = {
     map.setCollisionByExclusion([]);
 
     layer = map.createLayer(0);
-    layer.debug = true;
     layer.resizeWorld();
 
     player.create();
+    enemy.create();
 
     // HUD
     var health = game.add.text(50, 50, "Health: 100%", {font: "18px Arial", fill: "white", align: "left"});
@@ -36,15 +44,21 @@ Game.prototype = {
 
   update: function() {
     player.update();
-    game.physics.arcade.collide(player.sprite, layer);
+    game.physics.arcade.collide(player.sprite, layer, function(){}, null, this);
+    if (enemy.canSee(player.sprite)){
+      game.add.text(300, 50, "Alert", {font: "28px Arial", fill: "red", align: "left"});
+      // enemy.shoot();
+      weapon.fire(enemy)
+    }
+    enemy.update();
 
   },
 
   render: function() {
+    // game.debug.spriteInfo(weapon, 0, 0);
+    // game.debug.body(player.sprite);
+    // game.debug.visibleBody(player.sprite);
     var zone = game.camera.deadzone;
-    game.debug.bodyInfo(player, 32, 320);
-
-    // game.context.fillStyle = 'rgba(255,0,0,0.6)';
-    // game.context.fillRect(zone.x, zone.y, zone.width, zone.height);
+    // game.debug.bodyInfo(player, 32, 320);
   }
 }

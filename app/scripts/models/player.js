@@ -11,7 +11,6 @@ Player.prototype = {
   speed: 200,
 
   preload: function(){
-
     this.game.load.image(this.name, this.spriteSheet);
     this.game.load.atlasJSONHash(this.spriteAtlas, this.spriteSheet, this.spriteAtlasJson);
   },
@@ -19,7 +18,7 @@ Player.prototype = {
   create: function(){
     this.sprite = this.game.add.sprite(94, 420, 'snake_sprites', "snake_right.png");
     this.game.physics.enable(this.sprite);
-    this.sprite.anchor.set(0.5);
+    // this.sprite.anchor.set(0.5);
     this.sprite.body.collideWorldBounds = true;
     // this.sprite.inputEnabled = true;
     this.game.camera.follow(this.sprite);
@@ -43,6 +42,9 @@ Player.prototype = {
       ["snake_down.png", "snake_down_walk.png"],
       5, true, false
     );
+
+    this.sprite.body.setSize(65, 30, 0, 95);
+    this.sprite.body.setVisibleSize(65, 100);
   },
 
   update: function() {
