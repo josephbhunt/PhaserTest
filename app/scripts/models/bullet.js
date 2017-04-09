@@ -28,6 +28,9 @@ var Bullet = function (game, key) {
   this.exists = false;
   this.tracking = false;
   this.scaleSpeed = 0;
+  game.physics.enable(this, Phaser.Physics.ARCADE);
+  this.body.collideWorldBounds = true;
+  this.body.onCollide = new Phaser.Signal();
 };
 Bullet.prototype = Object.create(Phaser.Sprite.prototype);
 Bullet.prototype.constructor = Bullet;
@@ -54,21 +57,35 @@ Bullet.prototype.fire = function (x, y, angle, speed, gx, gy) {
 var Weapon = {};
 
 Weapon.SingleBullet = function (game) {
+  this.player = player;
   Phaser.Group.call(this, game, game.world, 'Single Bullet', false, true, Phaser.Physics.ARCADE);
   this.nextFire = 0;
   this.bulletSpeed = 600;
   this.fireRate = 200;
-  for (var i = 0; i < 64; i++){
+  for (var i = 0; i < 10; i++){
       this.add(new Bullet(game, 'bullet'), true);
   }
   return this;
 };
+
 Weapon.SingleBullet.prototype = Object.create(Phaser.Group.prototype);
+
 Weapon.SingleBullet.prototype.constructor = Weapon.SingleBullet;
-Weapon.SingleBullet.prototype.fire = function (source) {
+
+Weapon.SingleBullet.prototype.fire = function (source, target) {
   if (this.game.time.time < this.nextFire) { return; }
   var x = source.sprite.x - 0;
   var y = source.sprite.y + 10;
-  this.getFirstExists(false).fire(x, y, 0, this.bulletSpeed, 0, 0);
+  firstExists = this.getFirstExists(false)
+  if (firstExists === null) {
+    this.add(new Bullet(game, 'bullet'), true);
+    firstExists = this.getFirstExists(false);
+  }
+  firstExists.fire(x, y, 0, this.bulletSpeed, 0, 0);
   this.nextFire = this.game.time.time + this.fireRate;
 };
+
+Weapon.SingleBullet.prototype.collisionCallback = function(bullet){
+  this.remove(bullet, true);
+  this.add(new Bullet(game, 'bullet'), true);
+}

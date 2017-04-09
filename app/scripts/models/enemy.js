@@ -17,23 +17,19 @@ Enemy.prototype= {
   create: function(){
     this.sprite = this.game.add.sprite(550, 150, this.name);
     this.sprite.anchor.set(0.5);
-    this.singleBullet = new Weapon.SingleBullet(this.game)
+    this.singleBullet = new Weapon.SingleBullet(this.game);
   },
 
   update: function(){
-    for (var i = 0; i < this.bullets.length; i++) {
-      if (this.bullets[i].isOutOfBounds) {
-        this.bullets.pop(i);
-      }
-      else {
-        this.bullets[i].update();
-      }
-    }
-
     if (this.canSee(this.player.sprite)){
       this.game.add.text(300, 50, "Alert", {font: "28px Arial", fill: "red", align: "left"});
-      this.singleBullet.fire(this)
+      this.singleBullet.fire(this, this.player)
     }
+    var result = game.physics.arcade.collide(this.player.sprite, this.singleBullet, (function(_this){
+      return function(player, bullet){
+        _this.singleBullet.collisionCallback(bullet);
+      };
+    })(this));
   },
 
   render: function(){
@@ -41,13 +37,8 @@ Enemy.prototype= {
 
   canSee: function(sprite){
     var canSee = sprite.x < this.sprite.x &&
-      this.sprite.y > (sprite.y - sprite.body.visibleHeight / 2) &&
-      this.sprite.y < (sprite.y + sprite.body.visibleHeight / 2);
+      this.sprite.y > (sprite.y - sprite.body.visibleHeight) &&
+      this.sprite.y < (sprite.y + sprite.body.visibleHeight);
     return canSee;
   },
-
-  shoot: function(){
-    bullet = new Bullet(this.game, this)
-    this.bullets.push(bullet)
-  }
 }

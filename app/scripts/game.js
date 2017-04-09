@@ -47,6 +47,7 @@ Game.prototype = {
   },
 
   render: function() {
+    // game.debug.body(enemy.sprite);
     // game.debug.spriteInfo(weapon, 0, 0);
     // game.debug.body(player.sprite);
     // game.debug.visibleBody(player.sprite);
