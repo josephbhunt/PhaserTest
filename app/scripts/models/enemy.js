@@ -1,5 +1,6 @@
-var Enemy = function(game){
+var Enemy = function(game, player){
   this.game = game;
+  this.player = player;
   this.name = "Enemy";
   this.spritePath = "app/img/camera.png"
   this.sprite = null;
@@ -16,6 +17,7 @@ Enemy.prototype= {
   create: function(){
     this.sprite = this.game.add.sprite(550, 150, this.name);
     this.sprite.anchor.set(0.5);
+    this.weapon = new Weapon.SingleBullet(this.game)
   },
 
   update: function(){
@@ -26,6 +28,11 @@ Enemy.prototype= {
       else {
         this.bullets[i].update();
       }
+    }
+
+    if (this.canSee(this.player.sprite)){
+      this.game.add.text(300, 50, "Alert", {font: "28px Arial", fill: "red", align: "left"});
+      this.weapon.fire(this)
     }
   },
 

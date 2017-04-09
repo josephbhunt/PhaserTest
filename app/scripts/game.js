@@ -3,7 +3,6 @@ var Game = function(game){
   var enemy;
   var map;
   var graphics;
-  var weapon;
 }
 
 Game.prototype = {
@@ -13,7 +12,7 @@ Game.prototype = {
     game.load.image("bullet", "app/img/bullet_left.png")
 
     player = new Player(game);
-    enemy = new Enemy(game);
+    enemy = new Enemy(game, player);
     enemy.preload();
     player.preload();
   },
@@ -23,7 +22,6 @@ Game.prototype = {
 
     // Debuging
     game.graphics = game.add.graphics(0, 0);
-    weapon = new Weapon.SingleBullet(game)
 
     // Map
     map = game.add.tilemap("map");
@@ -45,13 +43,7 @@ Game.prototype = {
   update: function() {
     player.update();
     game.physics.arcade.collide(player.sprite, layer, function(){}, null, this);
-    if (enemy.canSee(player.sprite)){
-      game.add.text(300, 50, "Alert", {font: "28px Arial", fill: "red", align: "left"});
-      // enemy.shoot();
-      weapon.fire(enemy)
-    }
     enemy.update();
-
   },
 
   render: function() {
