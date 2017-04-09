@@ -17,7 +17,7 @@ Enemy.prototype= {
   create: function(){
     this.sprite = this.game.add.sprite(550, 150, this.name);
     this.sprite.anchor.set(0.5);
-    this.weapon = new Weapon.SingleBullet(this.game)
+    this.singleBullet = new Weapon.SingleBullet(this.game)
   },
 
   update: function(){
@@ -32,7 +32,7 @@ Enemy.prototype= {
 
     if (this.canSee(this.player.sprite)){
       this.game.add.text(300, 50, "Alert", {font: "28px Arial", fill: "red", align: "left"});
-      this.weapon.fire(this)
+      this.singleBullet.fire(this)
     }
   },
 
@@ -49,6 +49,5 @@ Enemy.prototype= {
   shoot: function(){
     bullet = new Bullet(this.game, this)
     this.bullets.push(bullet)
-    console.log(this.bullets)
   }
 }

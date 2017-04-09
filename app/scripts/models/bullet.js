@@ -41,15 +41,15 @@ Bullet.prototype.fire = function (x, y, angle, speed, gx, gy) {
   this.angle = angle;
   // this.body.gravity.set(gx, gy);
 };
-Bullet.prototype.update = function () {
-  if (this.tracking){
-    this.rotation = Math.atan2(this.body.velocity.y, this.body.velocity.x);
-  }
-  if (this.scaleSpeed > 0){
-    this.scale.x += this.scaleSpeed;
-    this.scale.y += this.scaleSpeed;
-  }
-};
+// Bullet.prototype.update = function () {
+//   if (this.tracking){
+//     this.rotation = Math.atan2(this.body.velocity.y, this.body.velocity.x);
+//   }
+//   if (this.scaleSpeed > 0){
+//     this.scale.x += this.scaleSpeed;
+//     this.scale.y += this.scaleSpeed;
+//   }
+// };
 
 var Weapon = {};
 
