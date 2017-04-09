@@ -5,6 +5,7 @@ var Player = function (game){
   this.spriteAtlasJson = "app/img/mg1_snake.json";
   this.spriteAtlas = 'snake_sprites';
   this.sprite = null;
+  this.health = 100
 }
 
 Player.prototype = {
@@ -16,6 +17,10 @@ Player.prototype = {
   },
 
   create: function(){
+    this.hud = this.game.add.text(50, 50, "Health: " + player.health + "%", {font: "18px Arial", fill: "white", align: "left"});
+    this.hud.fixedToCamera = true;
+    this.hud.cameraOffset.setTo(50, 50);
+
     this.sprite = this.game.add.sprite(94, 420, 'snake_sprites', "snake_right.png");
     this.game.physics.enable(this.sprite);
     // this.sprite.anchor.set(0.5);
@@ -75,4 +80,10 @@ Player.prototype = {
 
   render: function(){
   }
+}
+
+Player.prototype.bulletCollision = function(){
+  this.health -= 5
+  this.hud.destroy()
+  this.hud = this.game.add.text(50, 50, "Health: " + player.health + "%", {font: "18px Arial", fill: "white", align: "left"});
 }

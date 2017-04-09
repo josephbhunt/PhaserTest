@@ -33,11 +33,6 @@ Game.prototype = {
 
     player.create();
     enemy.create();
-
-    // HUD
-    var health = game.add.text(50, 50, "Health: 100%", {font: "18px Arial", fill: "white", align: "left"});
-    health.fixedToCamera = true;
-    health.cameraOffset.setTo(50, 50);
   },
 
   update: function() {

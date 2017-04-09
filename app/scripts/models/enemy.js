@@ -23,11 +23,11 @@ Enemy.prototype= {
   update: function(){
     if (this.canSee(this.player.sprite)){
       this.game.add.text(300, 50, "Alert", {font: "28px Arial", fill: "red", align: "left"});
-      this.singleBullet.fire(this, this.player)
+      this.singleBullet.fire(this)
     }
     var result = game.physics.arcade.collide(this.player.sprite, this.singleBullet, (function(_this){
       return function(player, bullet){
-        _this.singleBullet.collisionCallback(bullet);
+        _this.singleBullet.collisionCallback(bullet, _this.player);
       };
     })(this));
   },

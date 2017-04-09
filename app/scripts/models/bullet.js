@@ -72,7 +72,7 @@ Weapon.SingleBullet.prototype = Object.create(Phaser.Group.prototype);
 
 Weapon.SingleBullet.prototype.constructor = Weapon.SingleBullet;
 
-Weapon.SingleBullet.prototype.fire = function (source, target) {
+Weapon.SingleBullet.prototype.fire = function (source) {
   if (this.game.time.time < this.nextFire) { return; }
   var x = source.sprite.x - 0;
   var y = source.sprite.y + 10;
@@ -85,7 +85,7 @@ Weapon.SingleBullet.prototype.fire = function (source, target) {
   this.nextFire = this.game.time.time + this.fireRate;
 };
 
-Weapon.SingleBullet.prototype.collisionCallback = function(bullet){
+Weapon.SingleBullet.prototype.collisionCallback = function(bullet, target){
   this.remove(bullet, true);
-  this.add(new Bullet(game, 'bullet'), true);
+  target.bulletCollision();
 }
